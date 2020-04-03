@@ -8,6 +8,9 @@
 #ifndef MY_H
 #define MY_H
 
+#define TRUE 1
+#define EXP 2.718281828459045
+
 void my_putchar(char c);
 int my_isneg(int nb);
 int my_put_nbr(int nb);
@@ -56,4 +59,6 @@ char **my_str_to_word_array(char *str, int slash_mode_on);
 int my_biggest_word_into_buff(char *buff, char stop);
 char **my_file_to_dbl_array(char *file_name);
 int my_count_wrd_into_buff(char *str, char stop);
+float my_exp(float nb);
+
 #endif
