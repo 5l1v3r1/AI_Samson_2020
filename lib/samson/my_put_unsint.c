@@ -5,7 +5,7 @@
 ** This function print unsigned int
 */
 
-#include "my.h"
+#include "samson.h"
 
 int my_put_unsint(unsigned int number)
 {

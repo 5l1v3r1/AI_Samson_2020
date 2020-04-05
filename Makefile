@@ -11,6 +11,10 @@ FILES = main.c
 
 TEST_DIR = tests/
 
+INC_DIR	=	-Iinclude/
+
+LIB_DIR	=	-L./lib/
+
 TESTS_FILES	=	tests.c
 
 SRC =	$(addprefix $(SRC_DIR), $(FILES))
@@ -21,47 +25,40 @@ SRC_TEST = $(addprefix $(TEST_DIR), $(TESTS_FILES))
 
 OBJ_TEST = $(SRC_TEST:.c=.o)
 
-LDFLAGS		=	-lcriterion -lgcov --coverage -L$(LIB_DIR)my/ -lmy -L$(LIB_DIR)my_fs/ -lmy_fs
-
-INC_DIR	=	-Iinclude/
-
-LIB_DIR	=	./lib/
+LDFLAGS		=	-lcriterion -lgcov --coverage $(LIB_DIR)samson/ -lsamson
 
 CFLAGS 	=	-Wall -Wextra -W $(INC_DIR)
 
 CC	=	gcc
 
-NAME = CHANGE_THE_BINARY_NAME
+NAME = samson
 
 all : $(NAME)
 
 debug: CFLAGS += -g3
 debug: fclean $(OBJ)
-	make -C ./lib/my debug
-	make -C ./lib/my_fs debug
+	make -C ./lib/samson debug
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(LDFLAGS)
 
 tests_run: re
 tests_run: $(OBJ_TEST)
-		gcc -o unit-tests $(LDFLAGS) $(SRC_TEST) ./lib/my/libmy.a ./lib/my_fs/libmy_fs.a $(CFLAGS)
+		gcc -o unit-tests $(LDFLAGS) $(SRC_TEST) ./lib/samson libsamson.a $(CFLAGS)
 		./unit-tests
 		gcov *.gcna
 		gcov *.gcno
 
 
 $(NAME) : $(OBJ)
-	cd ./lib/my && make && cd ../../
-	cd ./lib/my_fs && make && cd ../../
+	make -C ./lib/samson
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(LDFLAGS)
+
 clean :
-	cd ./lib/my && make clean && cd ../../
-	cd ./lib/my_fs && make clean && cd ../../
+	make -C ./lib/samson clean
 	rm -f $(OBJ)
 	rm -f $(OBJ_TEST)
 
 fclean : clean
-	cd ./lib/my && make fclean && cd ../../
-	cd ./lib/my_fs && make fclean && cd ../../
+	make -C ./lib/samson fclean
 	rm -f $(NAME)
 	rm -f tests.c.gcov
 	rm -f tests.gcda

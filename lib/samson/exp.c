@@ -5,7 +5,7 @@
 ** This function return the exponetial of a number.
 */
 
-#include "my.h"
+#include "samson.h"
 
 float exp_neg(float nb)
 {
@@ -15,7 +15,7 @@ float exp_neg(float nb)
     return (result);
 }
 
-float my_exp(float nb)
+float sms_exp(float nb)
 {
     float result = 1;
     int negative = 0;

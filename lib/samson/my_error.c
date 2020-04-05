@@ -6,7 +6,7 @@
 */
 
 #include <unistd.h>
-#include "my.h"
+#include "samson.h"
 
 int my_error(const char *str)
 {

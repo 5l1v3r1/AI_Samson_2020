@@ -6,7 +6,7 @@
 ** char contains into a file.
 */
 
-#include "my_fs.h"
+#include "samson.h"
 #include <unistd.h>
 #include <stdlib.h>
 

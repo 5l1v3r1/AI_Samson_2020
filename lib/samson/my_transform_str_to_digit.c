@@ -6,7 +6,7 @@
 ** transform a str into digit
 */
 
-#include "my.h"
+#include "samson.h"
 
 int my_str_to_digit(char *str)
 {

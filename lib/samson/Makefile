@@ -50,18 +50,28 @@ SRC =	my_putchar.c				\
 	my_file_to_dbl_array.c			\
 	my_biggest_word.c				\
 	my_count_wrd_into_buff.c		\
-	my_exp.c
+	exp.c							\
+	fs_cat_x_bytes.c				\
+	fs_get_number_from_first_line.c	\
+	fs_open_file.c					\
+	fs_print_first_line.c			\
+	fs_understand_return_of_read.c	\
+	fs_nb_char_into_file.c			\
+	fs_write_control_file.c			\
+	brain.c							\
+	random_gen.c					\
+	power_ten.c						\
+	open_csv.c
 
 OBJ = $(SRC:.c=.o)
 
-NAME = libmy.a
+NAME = libsamson.a
 
 all : $(NAME)
 
 $(NAME) : $(OBJ)
 	ar rc $(NAME) $(OBJ)
-	cp my.h ../../include
-	cp my.h ../my_fs/
+	cp samson.h ../../include
 
 clean :
 	rm -f $(OBJ)

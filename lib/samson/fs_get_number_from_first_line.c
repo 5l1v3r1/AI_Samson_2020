@@ -6,7 +6,7 @@
 ** positive number written on the first line of the file passed as parameter.
 */
 
-#include "my_fs.h"
+#include "samson.h"
 #include <unistd.h>
 
 int fs_get_number_from_first_line(int fd)

@@ -7,7 +7,7 @@
 */
 
 #include <unistd.h>
-#include "my_fs.h"
+#include "samson.h"
 
 void fs_cat_x_bytes(char const *filepath, int x)
 {

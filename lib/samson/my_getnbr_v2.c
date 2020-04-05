@@ -7,7 +7,7 @@
 */
 
 #include <unistd.h>
-#include "my.h"
+#include "samson.h"
 
 int my_getnbr_v2(char const *str, int *error)
 {

@@ -5,7 +5,7 @@
 ** je ne sais pas
 */
 
-#include "my.h"
+#include "samson.h"
 #include <stdlib.h>
 
 char *my_strcat(char *dest, char const *src)

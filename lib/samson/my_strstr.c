@@ -5,7 +5,7 @@
 ** searchthe first match between string
 */
 
-#include "my.h"
+#include "samson.h"
 
 int matching(char *str, char const *to_find, int i)
 {

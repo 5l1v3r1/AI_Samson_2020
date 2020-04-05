@@ -9,8 +9,8 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
-#include "my_fs.h"
-#include "my.h"
+#include "samson.h"
+#include "samson.h"
 
 int fs_open_file(char const *filepath)
 {

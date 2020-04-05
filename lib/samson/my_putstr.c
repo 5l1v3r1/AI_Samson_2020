@@ -5,7 +5,7 @@
 ** write a sting on the terminal
 */
 
-#include "my.h"
+#include "samson.h"
 #include <unistd.h>
 
 void my_putstr(char const *str)

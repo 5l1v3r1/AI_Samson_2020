@@ -6,8 +6,8 @@
 */
 
 #include <stdlib.h>
-#include "my.h"
-#include "my_fs.h"
+#include "samson.h"
+#include "samson.h"
 #include <unistd.h>
 
 char *clean_array(char *array, int lenght_array)
@@ -46,12 +46,13 @@ void file(char *array, char *str, int *nb_char_alr_hdl, char stop)
     *nb_char_alr_hdl = i + 1;
 }
 
-char **my_file_to_dbl_array(char *filename)
+char **my_file_to_dbl_array(char *filename, char parser)
 {
     char **array = NULL;
+    int csv = FALSE;
     char *buff = buffering_file(filename);
-    int nb_char = my_biggest_word_into_buff(buff, ':');
-    int nb_word = my_count_wrd_into_buff(buff, ':'), nb_char_alr_hdl = 0;
+    int nb_char = my_biggest_word_into_buff(buff, parser);
+    int nb_word = my_count_wrd_into_buff(buff, parser), nb_char_alr_hdl = 0;
 
     array = malloc(sizeof(char *) * (nb_word + 1));
     if (array == NULL)
@@ -65,7 +66,7 @@ char **my_file_to_dbl_array(char *filename)
     array[nb_word] = NULL;
     for (int i = 0; i < nb_word; i++) {
         array[i] = clean_array(array[i], nb_char);
-        file(array[i], buff, &nb_char_alr_hdl, ':');
+        file(array[i], buff, &nb_char_alr_hdl, parser);
     }
     free(buff);
     return (array);

@@ -5,7 +5,7 @@
 ** je ne sais pas
 */
 
-#include "my.h"
+#include "samson.h"
 
 int my_isneg(int n)
 {

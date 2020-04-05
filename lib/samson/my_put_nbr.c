@@ -5,7 +5,7 @@
 ** print a nbr on the terminal
 */
 
-#include "my.h"
+#include "samson.h"
 
 int my_put_nbr(int nb)
 {

@@ -7,7 +7,7 @@
 */
 
 #include <unistd.h>
-#include "my_fs.h"
+#include "samson.h"
 
 void fs_print_first_line(char const *filepath)
 {

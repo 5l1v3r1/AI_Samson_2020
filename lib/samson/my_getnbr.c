@@ -5,7 +5,7 @@
 ** search in a string a number and return it on int
 */
 
-#include "my.h"
+#include "samson.h"
 #include <unistd.h>
 
 int my_getnbr(char const *str)

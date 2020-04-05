@@ -5,7 +5,7 @@
 ** This function display a double on screen
 */
 
-#include "my.h"
+#include "samson.h"
 
 double my_transform_char_into_double(char *str)
 {

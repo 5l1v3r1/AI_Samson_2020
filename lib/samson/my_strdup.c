@@ -5,7 +5,7 @@
 ** This function duplicate a string
 */
 
-#include "my.h"
+#include "samson.h"
 
 char *my_strdup(char *str)
 {

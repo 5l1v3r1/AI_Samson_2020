@@ -5,7 +5,7 @@
 ** Transform a int into a str.c
 */
 
-#include "my.h"
+#include "samson.h"
 #include <stdlib.h>
 char *my_int_to_str(int nb)
 {

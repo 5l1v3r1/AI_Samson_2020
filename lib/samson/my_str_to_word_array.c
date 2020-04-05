@@ -6,7 +6,7 @@
 */
 
 #include <stdlib.h>
-#include "my.h"
+#include "samson.h"
 
 int count_biggest(char *str)
 {
