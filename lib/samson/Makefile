@@ -61,7 +61,15 @@ SRC =	my_putchar.c				\
 	brain.c							\
 	random_gen.c					\
 	power_ten.c						\
-	open_csv.c
+	open_csv.c						\
+	int_encoder.c					\
+	display_fit.c					\
+	clean_array.c					\
+	neuron.c						\
+	layer.c							\
+	model.c							\
+	move_into_model.c				\
+	print_model.c
 
 OBJ = $(SRC:.c=.o)
 
