@@ -8,13 +8,38 @@
 #ifndef SAMSON_H
 #define SAMSON_H
 
+#include <stdlib.h>
+#include <unistd.h>
+#include <stdio.h>
+
+typedef struct neuron_s {
+    int id;
+    float probability;
+    float *weight;
+    struct neuron_s *next;
+} neuron_t;
+
+typedef struct layer_s {
+    int id;
+    int nb_neuron;
+    neuron_t *first;
+    struct layer_s *next;
+} layer_t;
+
+typedef struct model_s {
+    int nb_input;
+    int nb_output;
+    int nb_layers;
+    struct layer_s *first;
+} model_t;
+
                                                                          //start CONST AND DEFINE
 #define TRUE          1                                                        //CONST AND DEFINE
 #define FALSE         0                                                        //CONST AND DEFINE
 #define EXP           2.718281828459045                                        //CONST AND DEFINE
 #define EULER         2.718281                                                 //CONST AND DEFINE
 #define LEARNING_RATE 0.5                                                      //CONST AND DEFINE
-#define EPITECH_ERROR 84                                                       //CONST AND DEFINE
+#define ERROR 84                                                               //CONST AND DEFINE
 #define SUCCES        0                                                        //CONST AND DEFINE
                                                                            //end CONST AND DEFINE
 
@@ -80,11 +105,28 @@ int fs_write_debug_file(char *str_to_write, int nb_to_write);                  /
                                                                            //end PROTOTYPES LIB MY_FS
 
                                                                          //start PROTOTYPES LIB SAMSON
-int sms_random_gen_int(int min, int max);                                          //PROTOTYPES LIB SAMSON
+int sms_random_gen_int(int min, int max);                                      //PROTOTYPES LIB SAMSON
 float sms_random_float(float min, float max, int nb_dec);                      //PROTOTYPES LIB SAMSON
 float sms_xposant_ten(float number, int xposant);                              //PROTOTYPES LIB SAMSON
 char **sms_open_csv(char *filename);                                           //PROTOTYPES LIB SAMSON
 float sms_exp(float nb);                                                       //PROTOTYPES LIB SAMSON
+char **sms_int_encoder(char **dataset);                                        //PROTOTYPES LIB SAMSON
+char *sms_clean_array(char *str, int lenght);                                  //PROTOTYPES LIB SAMSON
+char *sms_fit_lines(char *str, int lenght);                                    //PROTOTYPES LIB SAMSON
+void sms_display_first_end_line(char *display_lines, int end);                 //PROTOTYPES LIB SAMSON
+int sms_display_model(int cur_gen, int tot_gen, int end);                      //PROTOTYPES LIB SAMSON
+int sms_add_neuron(layer_t *layer, int id);                                    //PROTOTYPES LIB SAMSON
+neuron_t *sms_get_last_neuron(neuron_t *current);                              //PROTOTYPES LIB SAMSON
+neuron_t *sms_prepare_new_neuron(neuron_t *new, int id);                       //PROTOTYPES LIB SAMSON
+float *sms_clean_float_array(float *array, int lenght);                        //PROTOTYPES LIB SAMSON
+int sms_rm_neuron(layer_t *layer);                                             //PROTOTYPES LIB SAMSON
+int sms_add_layer(model_t *model, int nb_neuron, int id);                      //PROTOTYPES LIB SAMSON
+neuron_t *sms_find_neuron_by_id(layer_t *layer, int id);                       //PROTOTYPES LIB SAMSON
+layer_t *sms_find_layer_by_id(model_t *model, int id);                         //PROTOTYPES LIB SAMSON
+model_t *sms_init_model(void);                                                 //PROTOTYPES LIB SAMSON
+int sms_rm_model(model_t *model);                                              //PROTOTYPES LIB SAMSON
+void sms_print_layer_model(model_t *model);
+void sms_print_neuron_layer(layer_t *layer);
                                                                            //end PROTOTYPES LIB SAMSON
 
 #endif
