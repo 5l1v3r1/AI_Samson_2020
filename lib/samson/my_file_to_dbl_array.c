@@ -61,7 +61,7 @@ char **my_file_to_dbl_array(char *filename, char parser)
         array[i] = NULL;
         array[i] = malloc(sizeof(char) * (nb_char + 1));
         if (array[i] == NULL)
-            return (0);
+            return (NULL);
     }
     array[nb_word] = NULL;
     for (int i = 0; i < nb_word; i++) {
