@@ -7,6 +7,16 @@
 
 #include "samson.h"
 
+int sms_prepare_model(model_t *model)
+{
+    if (model == NULL)
+        return (ERROR);
+    model->nb_layers = 0;
+    model->nb_input = 0;
+    model->nb_output = 0;
+    return (SUCCESS);
+}
+
 model_t *sms_init_model(void)
 {
     model_t *model = malloc(sizeof(model_t));
@@ -14,6 +24,8 @@ model_t *sms_init_model(void)
     if (model == NULL)
         return (NULL);
     model->first = NULL;
+    if (sms_prepare_model(model) == ERROR)
+        return (NULL);
     return (model);
 }
 
@@ -34,5 +46,5 @@ int sms_rm_model(model_t *model)
     sms_rm_neuron(current);
     free(current);
     free(model);
-    return (SUCCES);
+    return (SUCCESS);
 }
