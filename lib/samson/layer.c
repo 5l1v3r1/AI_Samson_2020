@@ -13,7 +13,7 @@ layer_t *sms_prepare_new_layer(layer_t *new_layer, int id)
     new_layer->nb_neuron = 0;
     new_layer->first = NULL;
     new_layer->next = NULL;
-    return (new_layer)
+    return (new_layer);
 }
 
 int sms_add_layer(model_t *model, int nb_neuron)
