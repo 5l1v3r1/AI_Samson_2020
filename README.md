@@ -19,7 +19,7 @@ int main()
     model_t *model = sms_init_model();
     int result = SUCCESS;
 
-    if (sms_prepare_model(model) == ERROR)
+    if (model == NULL)
         return (ERROR);
     result = sms_add_layer(model, 4);
     result = sms_add_layer(model, 4);
