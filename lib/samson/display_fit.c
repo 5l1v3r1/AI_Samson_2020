@@ -46,5 +46,5 @@ int sms_display_model(int cur_gen, int tot_gen, int end)
         return (ERROR);
     sms_display_first_end_line(display_lines, end);
     free(display_lines);
-    return (SUCCES);
+    return (SUCCESS);
 }
