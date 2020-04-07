@@ -47,7 +47,7 @@ int sms_rm_neuron(layer_t *layer)
     }
     free(current->weight);
     free(current);
-    return (SUCCES);
+    return (SUCCESS);
 }
 
 int sms_add_neuron(layer_t *layer, int id)
@@ -71,5 +71,5 @@ int sms_add_neuron(layer_t *layer, int id)
         layer->first = new_neuron;
     else
         current_neuron->next = new_neuron;
-    return (SUCCES);
+    return (SUCCESS);
 }
