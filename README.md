@@ -17,22 +17,25 @@ exemple of use :
 int main()
 {
     model_t *model = sms_init_model();
+    int result = SUCCESS;
 
-    if (model == NULL)
+    if (sms_prepare_model(model) == ERROR)
         return (ERROR);
-    for (int i = 0; i < 10; i++) {
-        sms_add_layer(model, 4, i);
-    }
+    result = sms_add_layer(model, 4);
+    result = sms_add_layer(model, 4);
+    result = sms_add_layer(model, 4);
+    result = sms_add_layer(model, 3);
+    result = sms_add_layer(model, 1);
+    if (result == ERROR)
+        return (ERROR);
+
+    result = sms_fit_model(model, 100, "sigmoid");
+
     sms_print_layer_model(model);
-    for (int i = 0; i < 10; i++) {
-        sms_print_neuron_layer(model->first);
-    }
+    sms_print_neuron_layer(sms_find_layer_by_id(model, 4));
     sms_rm_model(model);
-    return (0);
+    return (result);
 }
-           |
-           |
-           |
-           V
+
     Valgrind : 0 error 0 context
-    Memory : 0 leaks : 91 allocs,91free
+    Memory : 0 leaks
