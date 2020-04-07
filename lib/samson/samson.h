@@ -40,7 +40,7 @@ typedef struct model_s {
 #define EULER         2.718281                                                 //CONST AND DEFINE
 #define LEARNING_RATE 0.5                                                      //CONST AND DEFINE
 #define ERROR 84                                                               //CONST AND DEFINE
-#define SUCCES        0                                                        //CONST AND DEFINE
+#define SUCCESS        0                                                        //CONST AND DEFINE
                                                                            //end CONST AND DEFINE
 
                                                                          //start PROTOTYPES LIB MY
@@ -120,13 +120,18 @@ neuron_t *sms_get_last_neuron(neuron_t *current);                              /
 neuron_t *sms_prepare_new_neuron(neuron_t *new, int id);                       //PROTOTYPES LIB SAMSON
 float *sms_clean_float_array(float *array, int lenght);                        //PROTOTYPES LIB SAMSON
 int sms_rm_neuron(layer_t *layer);                                             //PROTOTYPES LIB SAMSON
-int sms_add_layer(model_t *model, int nb_neuron, int id);                      //PROTOTYPES LIB SAMSON
+int sms_add_layer(model_t *model, int nb_neuron);                              //PROTOTYPES LIB SAMSON
 neuron_t *sms_find_neuron_by_id(layer_t *layer, int id);                       //PROTOTYPES LIB SAMSON
 layer_t *sms_find_layer_by_id(model_t *model, int id);                         //PROTOTYPES LIB SAMSON
 model_t *sms_init_model(void);                                                 //PROTOTYPES LIB SAMSON
 int sms_rm_model(model_t *model);                                              //PROTOTYPES LIB SAMSON
 void sms_print_layer_model(model_t *model);
 void sms_print_neuron_layer(layer_t *layer);
+int sms_fit_model(model_t *model, int generation, char *activation);
+int sms_try_model(model_t *model);
+int sms_try_layers(model_t *model, int nb_layers);
+int sms_try_neurons(model_t *model);
+int sms_prepare_model(model_t *model);
                                                                            //end PROTOTYPES LIB SAMSON
 
 #endif
