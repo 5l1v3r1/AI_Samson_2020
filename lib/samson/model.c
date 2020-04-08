@@ -88,6 +88,8 @@ int sms_rm_model(model_t *model)
         free(to_rm);
     }
     sms_rm_neuron(current);
+    free(model->input_set);
+    free(model->output_set);
     free(current);
     free(model);
     return (SUCCESS);
