@@ -6,86 +6,48 @@
 ** compute result for neuronal network.
 */
 
+#include "samson.h"
 
-// float retropropagation(char *inputs, float gradient, int i)
+// float retropropagation(layer_t *layer1, float gradient, int i)
 // {
-//     float biais = biais + (gradient * LEARNING_RATE)
-//     weight[0] = weight[0] + (gradient * learning_rate * inputs[i][0])
-//     weight[1] = weight[1] + (gradient * learning_rate * inputs[i][1])
+
+//     float biais = 0.0;
+
+//     biais = biais + (gradient * LEARNING_RATE);
+//     weight[0] = weight[0] + (gradient * learning_rate * inputs[i][0]);
+//     weight[1] = weight[1] + (gradient * learning_rate * inputs[i][1]);
 // }
 
-// float activation(char *inputs, int i)
+//float linear_regression()
 // {
-//     float sp = 0.0;
 
-//     sp = biais + (inputs[i][0] * weight[0]) + (inputs[i][1] * weight[1])
-//     self._activate = 1/(1 + sms_exp(-sp))
 // }
 
-// float compute_gradient(char *output, float activate, int i)
-// {
-//     float gradient = output[i] - activate;
-// }
-
-neuron_t init_neuron(neuron_t neuron)
+float sms_somme(float som_nrn_lay2, float prob_nrn_lay1, float wgth_nrn_lay2)
 {
+    som_nrn_lay2 = som_nrn_lay2 + (prob_nrn_lay1 * wgth_nrn_lay2);
+    printf("(%f * %f) = %f\n", som_nrn_lay2, prob_nrn_lay1, wgth_nrn_lay2);
 
+    return (som_nrn_lay2);
 }
 
-// void init_layer(neuron_t *layer, int nb_unit)
-// {
-//     for (int i = 0; i < nb_unit; i++) {
-//         init_neuron(layer->)
-//     }
-
-// }
-
-model_t sms_model(int nb_inputs, int nb_output, int nb_layers)
+float sms_activation(float som)
 {
-    neuron_t *layer = malloc(sizeof(neuron_t) * nb_inputs);
-    layer->
+    float sp = 0.0;
+    float activation = 0.0;
+    float biais = 0;//sms_random_float(-1, 1, 3);
 
-    return (model);
+    sp = biais + som;
+    activation = 1/(1 + sms_exp(-sp));
+    return (activation);
 }
 
-int main(int argc, char **argv)
+float compute_gradient(float ml_activate, float result_activate)
 {
-    char **dataset = NULL;
-    char **int_dataset = NULL;
-    char inputs[4][2] = {{0, 0}, {1, 0}, {0, 1}, {1, 1}};
-    char output[4] = {0, 0, 0, 1};
-    int gen = 500;
-    int nb_unit = 4;
-    model_t model = sms_model(4, 1, 3);
-    neuron_t *layer1 = malloc(sizeof(neuron_t) * nb_unit);
+    float gradient = 0.0;
 
-
-    // init_layer(&layer1, nb_unit);
-
-// LOAD DATA
-    // dataset = sms_open_csv("data/qualification_round.csv");
-
-//ENCODE DATA
-    // int_dataset = sms_int_encoder(dataset);
-
-// //PRINT FIRST LINE TRAINING
-    // sms_display_model(0, 500, 0);
-
-// //TRAINING
-//     for (int i = 0; i < gen; i++) {
-//         printf("| GENERATION %d / %d                                   |\n", i + 1, gen);
-//     }
-
-// //PRINT LAST LINE AFTER TRAINING
-//     sms_display_model(0, 500, 1);
-
-
-
-
-
-    free(layer1);
-    // for (int i = 0; dataset[i] != NULL; i++)
-    //     free(dataset[i]);
-    // free(dataset);
-    return (0);
+    gradient = (ml_activate - result_activate);
+    gradient *= gradient;
+    return (gradient);
 }
+
