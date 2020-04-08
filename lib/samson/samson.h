@@ -14,7 +14,7 @@
 
 typedef struct neuron_s {
     int id;
-    int som;
+    float som;
     float prob;//chager par activate ou activation
     float *weight;
     struct neuron_s *next;
@@ -35,6 +35,8 @@ typedef struct model_s {
     int nb_input;
     int nb_output;
     int nb_layers;
+    float *input_set;
+    float *output_set;
     struct layer_s *first;
 } model_t;
 
@@ -132,16 +134,17 @@ model_t *sms_init_model(int nb_input, int nb_output);                          /
 int sms_rm_model(model_t *model);                                              //PROTOTYPES LIB SAMSON
 void sms_print_layer_model(model_t *model);
 void sms_print_neuron_layer(layer_t *layer);
-int sms_fit_model(model_t *model, int generation, char *activation);
+int sms_fit_model(model_t *model, int generation, char *activation, float *inp, int lngt);
 int sms_try_model(model_t *model);
 int sms_try_layers(model_t *model, int nb_layers);
 int sms_try_neurons(model_t *model);
 int sms_prepare_model(model_t *model, int nb_input, int nb_output);
 int sms_compile_model(model_t *model);
 float sms_somme(float som_nrn_lay2, float prob_nrn_lay1, float wgth_nrn_lay2);
-float sms_activation(neuron_t *nrn_layer2);
+float sms_activation(float som);
 int sms_link_model(model_t *model);
 int sms_layer_lenght(layer_t *layer);
+int sms_fill_dataset_user(model_t *model, float *user_dtset, int lenght_u);
                                                                            //end PROTOTYPES LIB SAMSON
 
 #endif
