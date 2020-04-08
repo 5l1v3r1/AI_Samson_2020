@@ -32,7 +32,7 @@ int sms_link_two_layer_together(layer_t *layer1, layer_t *layer2)
             printf("weight = %f\n", n, nrn_lay2->weight[n]);
             nrn_lay2->som = sms_somme(nrn_lay2->som, nrn_lay1->prob, nrn_lay2->weight[n]);
             nrn_lay2->prob = sms_activation(nrn_lay2->som);
-            printf("probability = %f  * %f\n", nrn_lay1->prob, nrn_lay2->weight[n]);//uninitialized value
+            printf("probability = %f  * %f\n", nrn_lay1->prob, nrn_lay2->weight[n]);
         }
     }
     printf("Somme = %f\n", nrn_lay2->som);
