@@ -10,7 +10,7 @@
 float *sms_clean_float_array(float *array, int lenght)
 {
     for (int i = 0; i < lenght; i++)
-        array[i] = 0.1;//not 0 bcs need to be multiplicate w/ input-> x * 0 = 0
+        array[i] = sms_random_float(-1.0, 1.0, 3);
     return (array);
 }
 
@@ -19,7 +19,8 @@ neuron_t *sms_prepare_new_neuron(neuron_t *new, int id)
     if (new == NULL)
         return (NULL);
     new->id = id;
-    new->probability = 0.1;
+    new->som = 0.0;
+    new->prob = 0.1;
     new->next = NULL;
     return (new);
 }
@@ -50,7 +51,7 @@ int sms_rm_neuron(layer_t *layer)
     return (SUCCESS);
 }
 
-int sms_add_neuron(layer_t *layer, int id)
+int sms_add_neuron(layer_t *layer, int id, int lenght_prev_lay)
 {
     neuron_t *new_neuron = malloc(sizeof(neuron_t));
     neuron_t *current_neuron = NULL;
@@ -62,10 +63,10 @@ int sms_add_neuron(layer_t *layer, int id)
     if (new_neuron == NULL)
         return (ERROR);
     current_neuron = sms_get_last_neuron(layer->first);
-    weight = malloc(sizeof(float) * (layer->nb_neuron + 1));
+    weight = malloc(sizeof(float) * (lenght_prev_lay + 1));
     if (weight == NULL)
         return (ERROR);
-    weight = sms_clean_float_array(weight, layer->nb_neuron + 1);
+    weight = sms_clean_float_array(weight, layer->nb_neuron);
     new_neuron->weight = weight;
     if (current_neuron == NULL)
         layer->first = new_neuron;
