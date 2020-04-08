@@ -70,6 +70,7 @@ SRC =	my_putchar.c				\
 	move_into_model.c				\
 	print_model.c					\
 	compile_model.c					\
+	compute.c						\
 	linker.c
 
 OBJ = $(SRC:.c=.o)
