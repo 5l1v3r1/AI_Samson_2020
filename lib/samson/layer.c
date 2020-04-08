@@ -38,14 +38,14 @@ int sms_add_layer(model_t *model, int nb_neuron)
 
     if (model == NULL || new_layer == NULL)
         return (ERROR);
+    current_layer = model->first;
     if (current_layer != NULL)
-        lngt_p_l = sms_layer_lenght(current_layer);
+        lngt_p_l = current_layer->nb_neuron + 1;
     new_layer = sms_prepare_new_layer(new_layer, model->nb_layers);
     for (; new_layer->nb_neuron < nb_neuron; new_layer->nb_neuron++) {
         if (sms_add_neuron(new_layer, new_layer->nb_neuron, lngt_p_l) == ERROR)
             return (ERROR);
     }
-    current_layer = model->first;
     while (current_layer != NULL && current_layer->next != NULL)
         current_layer = current_layer->next;
     if (current_layer == NULL)
