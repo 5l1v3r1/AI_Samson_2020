@@ -9,8 +9,11 @@
 
 float *sms_clean_float_array(float *array, int lenght)
 {
-    for (int i = 0; i < lenght; i++)
-        array[i] = sms_random_float(-1.0, 1.0, 3);
+    for (int i = 0; i < lenght; i++) {
+        array[i] = 2;//sms_random_float(-1.0, 1.0, 3);
+        printf("Init %d weight\n", i + 1);
+    }
+    printf("exit init weight\n\n\n");
     return (array);
 }
 
@@ -20,7 +23,7 @@ neuron_t *sms_prepare_new_neuron(neuron_t *new, int id)
         return (NULL);
     new->id = id;
     new->som = 0.0;
-    new->prob = 0.1;
+    new->prob = 1.0;
     new->next = NULL;
     return (new);
 }
@@ -66,7 +69,7 @@ int sms_add_neuron(layer_t *layer, int id, int lenght_prev_lay)
     weight = malloc(sizeof(float) * (lenght_prev_lay + 1));
     if (weight == NULL)
         return (ERROR);
-    weight = sms_clean_float_array(weight, layer->nb_neuron);
+    weight = sms_clean_float_array(weight, lenght_prev_lay - 1);
     new_neuron->weight = weight;
     if (current_neuron == NULL)
         layer->first = new_neuron;
