@@ -23,6 +23,7 @@ typedef struct neuron_s {
 typedef struct layer_s {
     int id;
     int nb_neuron;
+    int lenght_prev_layer;
     neuron_t *first;
     struct layer_s *next;
 } layer_t;
@@ -119,7 +120,7 @@ char *sms_clean_array(char *str, int lenght);                                  /
 char *sms_fit_lines(char *str, int lenght);                                    //PROTOTYPES LIB SAMSON
 void sms_display_first_end_line(char *display_lines, int end);                 //PROTOTYPES LIB SAMSON
 int sms_display_model(int cur_gen, int tot_gen, int end);                      //PROTOTYPES LIB SAMSON
-int sms_add_neuron(layer_t *layer, int id);                                    //PROTOTYPES LIB SAMSON
+int sms_add_neuron(layer_t *layer, int id, int lenght_prev_lay);               //PROTOTYPES LIB SAMSON
 neuron_t *sms_get_last_neuron(neuron_t *current);                              //PROTOTYPES LIB SAMSON
 neuron_t *sms_prepare_new_neuron(neuron_t *new, int id);                       //PROTOTYPES LIB SAMSON
 float *sms_clean_float_array(float *array, int lenght);                        //PROTOTYPES LIB SAMSON
@@ -140,6 +141,7 @@ int sms_compile_model(model_t *model);
 float sms_somme(float som_nrn_lay2, float prob_nrn_lay1, float wgth_nrn_lay2);
 float sms_activation(neuron_t *nrn_layer2);
 int sms_link_model(model_t *model);
+int sms_layer_lenght(layer_t *layer);
                                                                            //end PROTOTYPES LIB SAMSON
 
 #endif
