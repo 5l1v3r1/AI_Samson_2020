@@ -71,13 +71,32 @@ int sms_try_model(model_t *model)
     return (result);
 }
 
-int sms_fit_model(model_t *model, int generation, char *activation)
+int sms_compile_model(model_t *model)
 {
     write(1, "Using Samson, made by Sofian Belahouel.\n", 40);
     if (sms_try_model(model) == ERROR) {
-        write (1, "Model Compilation : Error\n", 27);
+        write(1, "Model Compilation : Error\n", 27);
         return (ERROR);
     }
     write(1, "Model Compilation : Success\n", 28);
     return (SUCCESS);
+}
+
+int sms_get_ml_output(model_t *model)
+{
+
+}
+
+int sms_fit_model(model_t *model, int generation, char *activation, float *inp, int lngt)
+{
+    if (sms_compile_model(model) == ERROR)
+        return (ERROR);
+    for (int i = 0; i < generation; i++) {
+        if (sms_fill_dataset_user(model, inp, lngt) == ERROR)
+            return (ERROR);
+            //JE DOIS FAIRE FILL RESULT
+        if (sms_link_model(model) == ERROR);
+            return (ERROR);
+        sms_get_ml_output(model);
+    }
 }
