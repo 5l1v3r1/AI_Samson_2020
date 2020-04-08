@@ -7,24 +7,27 @@
 
 #include "samson.h"
 
-int sms_prepare_model(model_t *model)
+int sms_prepare_model(model_t *model, int nb_input, int nb_output)
 {
     if (model == NULL)
         return (ERROR);
+    model->gradient = 0.0;
+    model->biais = 0;
+    model->learning_rate = 0.5;
     model->nb_layers = 0;
-    model->nb_input = 0;
-    model->nb_output = 0;
+    model->nb_input = nb_input;
+    model->nb_output = nb_output;
     return (SUCCESS);
 }
 
-model_t *sms_init_model(void)
+model_t *sms_init_model(int nb_input, int nb_output)
 {
     model_t *model = malloc(sizeof(model_t));
 
     if (model == NULL)
         return (NULL);
     model->first = NULL;
-    if (sms_prepare_model(model) == ERROR)
+    if (sms_prepare_model(model, 2, 1) == ERROR)
         return (NULL);
     return (model);
 }
