@@ -70,9 +70,9 @@ int sms_prepare_model(model_t *model, int nb_input, int nb_output)
 {
     if (model == NULL)
         return (ERROR);
-    model->gradient = 0.0;
+    model->gradient = NULL;
     model->biais = 0;
-    model->learning_rate = 0.5;
+    model->learning_rate = LEARNING_RATE;
     model->nb_layers = 0;
     model->nb_input = nb_input;
     model->nb_output = nb_output;
@@ -81,7 +81,9 @@ int sms_prepare_model(model_t *model, int nb_input, int nb_output)
     model->result_wanted = NULL;
     model->input_set = sms_prepare_dataset(model->input_set, nb_input);
     model->output_set = sms_prepare_dataset(model->output_set, nb_output);
-    if (model->input_set == NULL || model->output_set == NULL)
+    model->gradient = sms_prepare_dataset(model->gradient, nb_output);
+    if (model->input_set == NULL || model->output_set == NULL
+    || model->gradient == NULL)
         return (ERROR);
     return (SUCCESS);
 }
@@ -113,6 +115,7 @@ int sms_rm_model(model_t *model)
         free(to_rm);
     }
     sms_rm_neuron(current);
+    free(model->gradient);
     free(model->input_set);
     free(model->output_set);
     free(current);
