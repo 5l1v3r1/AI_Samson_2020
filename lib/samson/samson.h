@@ -29,7 +29,7 @@ typedef struct layer_s {
 } layer_t;
 
 typedef struct model_s {
-    float gradient;
+    float *gradient;
     float biais;
     float learning_rate;
     int nb_input;
@@ -46,7 +46,7 @@ typedef struct model_s {
 #define FALSE         0                                                        //CONST AND DEFINE
 #define EXP           2.718281828459045                                        //CONST AND DEFINE
 #define EULER         2.718281                                                 //CONST AND DEFINE
-#define LEARNING_RATE 0.5                                                      //CONST AND DEFINE
+#define LEARNING_RATE 0.1                                                      //CONST AND DEFINE
 #define ERROR 84                                                               //CONST AND DEFINE
 #define SUCCESS        0                                                        //CONST AND DEFINE
                                                                            //end CONST AND DEFINE
@@ -148,10 +148,9 @@ int sms_layer_lenght(layer_t *layer);                                          /
 int sms_fill_dataset_user(model_t *model, float *user_dtset, int lenght_u);    //PROTOTYPES LIB SAMSON
 float sms_get_proba_into_neuron(layer_t *layer, int id);                       //PROTOTYPES LIB SAMSON
 int sms_fill_dataoutput_mlresult(model_t *model);                              //PROTOTYPES LIB SAMSON
-int sms_display_link_mod(int choose, int found, int want);                     //PROTOTYPES LIB SAMSON
-int sms_display_link_two_layer_together(int choose, int id_lay1, int id_lay2); //PROTOTYPES LIB SAMSON
 int proces_link_nrn(layer_t *layer1, neuron_t *nrn_lay2);                      //PROTOTYPES LIB SAMSON
 int sms_link_two_neuron_together(layer_t *layer1, neuron_t *nrn2, int n);      //PROTOTYPES LIB SAMSON
+float sms_compute_gradient(float ml_activate, float result_activate);
                                                                            //end PROTOTYPES LIB SAMSON
 
 #endif
