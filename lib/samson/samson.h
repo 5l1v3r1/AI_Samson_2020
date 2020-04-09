@@ -37,6 +37,7 @@ typedef struct model_s {
     int nb_layers;
     float *input_set;
     float *output_set;
+    float *result_wanted;
     struct layer_s *first;
 } model_t;
 
@@ -132,25 +133,25 @@ neuron_t *sms_find_neuron_by_id(layer_t *layer, int id);                       /
 layer_t *sms_find_layer_by_id(model_t *model, int id);                         //PROTOTYPES LIB SAMSON
 model_t *sms_init_model(int nb_input, int nb_output);                          //PROTOTYPES LIB SAMSON
 int sms_rm_model(model_t *model);                                              //PROTOTYPES LIB SAMSON
-void sms_print_layer_model(model_t *model);
-void sms_print_neuron_layer(layer_t *layer);
-int sms_fit_model(model_t *model, int generation, char *activation, float *inp, int lngt);
-int sms_try_model(model_t *model);
-int sms_try_layers(model_t *model, int nb_layers);
-int sms_try_neurons(model_t *model);
-int sms_prepare_model(model_t *model, int nb_input, int nb_output);
-int sms_compile_model(model_t *model);
-float sms_somme(float som_nrn_lay2, float prob_nrn_lay1, float wgth_nrn_lay2);
-float sms_activation(float som);
-int sms_link_model(model_t *model);
-int sms_layer_lenght(layer_t *layer);
-int sms_fill_dataset_user(model_t *model, float *user_dtset, int lenght_u);
-float sms_get_proba_into_neuron(layer_t *layer, int id);
-int sms_fill_dataoutput_mlresult(model_t *model);
-int sms_display_link_mod(int choose, int found, int want);
-int sms_display_link_two_layer_together(int choose, int id_lay1, int id_lay2);
-int proces_link_nrn(layer_t *layer1, neuron_t *nrn_lay2);
-int sms_link_two_neuron_together(layer_t *layer1, neuron_t *nrn2, int n);
+void sms_print_layer_model(model_t *model);                                    //PROTOTYPES LIB SAMSON
+void sms_print_neuron_layer(layer_t *layer);                                   //PROTOTYPES LIB SAMSON
+int sms_fit_model(model_t *model, int generation, char *activation, float *inp, float *result, int lngt);
+int sms_try_model(model_t *model);                                             //PROTOTYPES LIB SAMSON
+int sms_try_layers(model_t *model, int nb_layers);                             //PROTOTYPES LIB SAMSON
+int sms_try_neurons(model_t *model);                                           //PROTOTYPES LIB SAMSON
+int sms_prepare_model(model_t *model, int nb_input, int nb_output);            //PROTOTYPES LIB SAMSON
+int sms_compile_model(model_t *model);                                         //PROTOTYPES LIB SAMSON
+float sms_somme(float som_nrn_lay2, float prob_nrn_lay1, float wgth_nrn_lay2); //PROTOTYPES LIB SAMSON
+float sms_activation(float som);                                               //PROTOTYPES LIB SAMSON
+int sms_link_model(model_t *model);                                            //PROTOTYPES LIB SAMSON
+int sms_layer_lenght(layer_t *layer);                                          //PROTOTYPES LIB SAMSON
+int sms_fill_dataset_user(model_t *model, float *user_dtset, int lenght_u);    //PROTOTYPES LIB SAMSON
+float sms_get_proba_into_neuron(layer_t *layer, int id);                       //PROTOTYPES LIB SAMSON
+int sms_fill_dataoutput_mlresult(model_t *model);                              //PROTOTYPES LIB SAMSON
+int sms_display_link_mod(int choose, int found, int want);                     //PROTOTYPES LIB SAMSON
+int sms_display_link_two_layer_together(int choose, int id_lay1, int id_lay2); //PROTOTYPES LIB SAMSON
+int proces_link_nrn(layer_t *layer1, neuron_t *nrn_lay2);                      //PROTOTYPES LIB SAMSON
+int sms_link_two_neuron_together(layer_t *layer1, neuron_t *nrn2, int n);      //PROTOTYPES LIB SAMSON
                                                                            //end PROTOTYPES LIB SAMSON
 
 #endif
