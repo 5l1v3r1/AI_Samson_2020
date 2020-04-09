@@ -56,7 +56,7 @@ int sms_fill_dataoutput_mlresult(model_t *model)
         return (ERROR);
     }
     write(1, "Collecting Machine Learning Result in output layer\n", 51);
-    output_layer = sms_find_layer_by_id(model, model->nb_layers);
+    output_layer = sms_find_layer_by_id(model, model->nb_layers - 1);
     if (output_layer == NULL || output_layer->first == NULL)
         return (ERROR);
     for (int i = 0; i < model->nb_output; i++)
@@ -82,11 +82,10 @@ int sms_link_model(model_t *model)
                 break;
             if (sms_link_two_layer_together(layer1, layer2) == ERROR)
                 return (ERROR);
-            if (i == model->nb_layers - 1
-            && sms_fill_dataoutput_mlresult(model) == ERROR)
-                return (ERROR);
         }
     }
+    if (sms_fill_dataoutput_mlresult(model) == ERROR)
+        return (ERROR);
     result = sms_display_link_mod(1, i, model->nb_layers);
     return (result);
 }
