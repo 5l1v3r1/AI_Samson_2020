@@ -145,6 +145,12 @@ float sms_activation(float som);
 int sms_link_model(model_t *model);
 int sms_layer_lenght(layer_t *layer);
 int sms_fill_dataset_user(model_t *model, float *user_dtset, int lenght_u);
+float sms_get_proba_into_neuron(layer_t *layer, int id);
+int sms_fill_dataoutput_mlresult(model_t *model);
+int sms_display_link_mod(int choose, int found, int want);
+int sms_display_link_two_layer_together(int choose, int id_lay1, int id_lay2);
+int proces_link_nrn(layer_t *layer1, neuron_t *nrn_lay2);
+int sms_link_two_neuron_together(layer_t *layer1, neuron_t *nrn2, int n);
                                                                            //end PROTOTYPES LIB SAMSON
 
 #endif
