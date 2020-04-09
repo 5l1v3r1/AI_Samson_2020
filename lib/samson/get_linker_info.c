@@ -36,7 +36,6 @@ int proces_link_nrn(layer_t *layer1, neuron_t *nrn_lay2)
     return (SUCCESS);
 }
 
-
 int sms_display_link_mod(int choose, int found, int want)
 {
     if (choose == 0) {
