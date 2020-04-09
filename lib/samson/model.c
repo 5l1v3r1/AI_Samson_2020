@@ -18,6 +18,28 @@ float *sms_prepare_dataset(float *dataset, int lenght)
     return (dataset);
 }
 
+int sms_give_input_first_lay(model_t *model)
+{
+    layer_t *input_lay = NULL;
+    neuron_t *neuron = NULL;
+
+    if (model == NULL || model->input_set == NULL || model->first == NULL)
+        return (ERROR);
+    input_lay = model->first;
+    if (input_lay->first == NULL)
+        return (ERROR);
+    neuron = input_lay->first;
+    if (neuron == NULL)
+        return (ERROR);
+    for (int i = 0; i < model->nb_input - 1; i++) {
+        if (neuron->next == NULL)
+            return (ERROR);
+        neuron->prob = model->input_set[i];
+        neuron = neuron->next;
+    }
+    return (SUCCESS);
+}
+
 int sms_fill_dataset_user(model_t *model, float *user_dtset, int lenght_u)
 {
     if (model == NULL || model->input_set == NULL || user_dtset == NULL) {
@@ -39,6 +61,8 @@ int sms_fill_dataset_user(model_t *model, float *user_dtset, int lenght_u)
         }
         model->input_set[i] = user_dtset[i];
     }
+    if (sms_give_input_first_lay(model) == ERROR)
+        return (ERROR);
     return (SUCCESS);
 }
 
@@ -54,6 +78,7 @@ int sms_prepare_model(model_t *model, int nb_input, int nb_output)
     model->nb_output = nb_output;
     model->input_set = NULL;
     model->output_set = NULL;
+    model->result_wanted = NULL;
     model->input_set = sms_prepare_dataset(model->input_set, nb_input);
     model->output_set = sms_prepare_dataset(model->output_set, nb_output);
     if (model->input_set == NULL || model->output_set == NULL)
