@@ -28,7 +28,7 @@ int sms_fill_dataset_user(model_t *model, float *user_dtset, int lenght_u)
         my_put_nbr(model->nb_input);
         write(1, " input(s), Got : ", 17);
         my_put_nbr(lenght_u);
-        write(1, " input(s) \n", 11);
+        write(1, " input(s)\n", 10);
         return (ERROR);
     }
     for (int i = 0; i < model->nb_input; i++) {
@@ -39,7 +39,7 @@ int sms_fill_dataset_user(model_t *model, float *user_dtset, int lenght_u)
         }
         model->input_set[i] = user_dtset[i];
     }
-    return (ERROR);
+    return (SUCCESS);
 }
 
 int sms_prepare_model(model_t *model, int nb_input, int nb_output)
@@ -68,7 +68,7 @@ model_t *sms_init_model(int nb_input, int nb_output)
     if (model == NULL)
         return (NULL);
     model->first = NULL;
-    if (sms_prepare_model(model, 2, 1) == ERROR)
+    if (sms_prepare_model(model, nb_input, nb_output) == ERROR)
         return (NULL);
     return (model);
 }
