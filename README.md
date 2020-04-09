@@ -31,33 +31,44 @@ float *dataset(void)
     dataset = malloc(sizeof(float) * 2);
     if (dataset == NULL)
         return (NULL);
-    dataset[0] = 1;
-    dataset[1] = 1;
+    dataset[0] = 0.543;
+    dataset[1] = 0.653;
     return (dataset);
 }
 
 int main()
 {
-    model_t *model = sms_init_model(2, 1);
     int result = SUCCESS;
     srand(time(NULL));
-    float *data = dataset();
     int lenght_dataset = 2;
+    int nb_output = 10;
+    model_t *model = sms_init_model(lenght_dataset, nb_output);
+    float *data = dataset();
 
     if (data == NULL)
         return (ERROR);
     if (model == NULL)
         return (ERROR);
-    result = sms_add_layer(model, 2);
-    result = sms_add_layer(model, 1);
+    result = sms_add_layer(model, lenght_dataset);
+    result = sms_add_layer(model, 5);
+    result = sms_add_layer(model, 44);
+    result = sms_add_layer(model, 66);
+    result = sms_add_layer(model, 33);
+    result = sms_add_layer(model, 15);
+    result = sms_add_layer(model, 7);
+    result = sms_add_layer(model, 3);
+    result = sms_add_layer(model, nb_output);
     if (result == ERROR)
         return (ERROR);
     result = sms_fit_model(model, 1, "sigmoid", data, lenght_dataset);
     sms_print_layer_model(model);
-    sms_print_neuron_layer(sms_find_layer_by_id(model, 4));
+    printf("OUTPUT LAYER = \n");
+    for (int i = 0; i < nb_output; i++)
+        printf("%f\n", model->output_set[i]);
+    // sms_print_neuron_layer(sms_find_layer_by_id(model, 4));
     sms_rm_model(model);
+    free(data);
     return (result);
 }
-
     Valgrind : 0 error 0 context
     Memory : 0 leaks
