@@ -82,21 +82,29 @@ int sms_compile_model(model_t *model)
     return (SUCCESS);
 }
 
+int sms_learn(model_t *model)
+{
+
+}
+
 int sms_get_ml_output(model_t *model)
 {
 
 }
 
-int sms_fit_model(model_t *model, int generation, char *activation, float *inp, int lngt)
+int sms_fit_model(model_t *model, int generation, char *activation, float *inp, float *result, int lngt)
 {
     if (sms_compile_model(model) == ERROR)
         return (ERROR);
+    if (result != NULL)
+        model->result_wanted = result;
     for (int i = 0; i < generation; i++) {
         if (sms_fill_dataset_user(model, inp, lngt) == ERROR)
             return (ERROR);
-            //JE DOIS FAIRE FILL RESULT
-        if (sms_link_model(model) == ERROR);
+        if (sms_link_model(model) == ERROR)
             return (ERROR);
-        sms_get_ml_output(model);
+        if (sms_get_ml_output(model) == TRUE)
+            sms_learn(model);
     }
+    return (SUCCESS);
 }
