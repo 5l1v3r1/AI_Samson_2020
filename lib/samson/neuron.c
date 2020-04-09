@@ -9,11 +9,8 @@
 
 float *sms_clean_float_array(float *array, int lenght)
 {
-    for (int i = 0; i < lenght; i++) {
+    for (int i = 0; i < lenght; i++)
         array[i] = sms_random_float(-1.0, 1.0, 3);
-        printf("Init %d weight\n", i + 1);
-    }
-    printf("exit init weight\n\n\n");
     return (array);
 }
 
