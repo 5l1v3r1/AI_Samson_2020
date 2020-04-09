@@ -15,6 +15,8 @@ Need to :
 -Build strenght_encoder.
 -Scale function (make clear code :)  )
 -Build matrix output that compare result_user with result_ml.
+-Build feature name 'Hot_Save' that print each information at each moment in
+a mem file.
 
 
 exemple of use :
