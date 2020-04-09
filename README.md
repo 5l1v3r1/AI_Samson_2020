@@ -2,12 +2,19 @@
 
 
 ACTUALLY:
+Have :
+-Build model.
+-Build layers.
+-Build eatch neuron together.
+-Copute som, compute activation, biais (only sigmoid right now).
+
 Need to :
--link eatch neuron between each oser.
--compute gradient, biais...
--create int_encoder
--create bin_encoder
--create strenght_encoder
+-Gradient Descent.
+-Build int_encoder.
+-Build bin_encoder.
+-Build strenght_encoder.
+-Scale function (make clear code :)  )
+-Build matrix output that compare result_user with result_ml.
 
 
 exemple of use :
