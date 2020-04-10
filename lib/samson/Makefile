@@ -72,7 +72,8 @@ SRC =	my_putchar.c				\
 	compile_model.c					\
 	compute.c						\
 	linker.c						\
-	get_linker_info.c
+	get_linker_info.c				\
+	training.c
 
 OBJ = $(SRC:.c=.o)
 
