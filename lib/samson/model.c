@@ -79,6 +79,8 @@ int sms_prepare_model(model_t *model, int nb_input, int nb_output)
     model->input_set = NULL;
     model->output_set = NULL;
     model->result_wanted = NULL;
+    model->loss = 0.0;
+    model->accuracy = 0.0;
     model->input_set = sms_prepare_dataset(model->input_set, nb_input);
     model->output_set = sms_prepare_dataset(model->output_set, nb_output);
     model->gradient = sms_prepare_dataset(model->gradient, nb_output);
