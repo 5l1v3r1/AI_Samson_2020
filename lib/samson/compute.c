@@ -8,26 +8,38 @@
 
 #include "samson.h"
 
-// float retropropagation(layer_t *layer1, float gradient, int i)
-// {
-
-//     float biais = 0.0;
-
-//     biais = biais + (gradient * LEARNING_RATE);
-//     weight[0] = weight[0] + (gradient * learning_rate * inputs[i][0]);
-//     weight[1] = weight[1] + (gradient * learning_rate * inputs[i][1]);
-// }
-
-float gradient_descent(model_t *model)
+float *retropropagation(float *array, int lenght, float gradient, int lr)
 {
-    int m = 1;
-    int p = 0;
-    int result = 0;
+    float biais = 0.0;
+    int neg = FALSE;
 
-    for (int i = 0; i < model->result_wanted[i]; i++) {
-        result = model->result_wanted[i];
+    if (gradient < 0) {
+        gradient *= -1;
+        neg = TRUE;
     }
+    for (int i = 0; i < lenght; i++) {
+        if (neg) {
+            array[i] = array[i] - (gradient * lr);
+        } else if (gradient > 0.8) {
+            array = sms_clean_float_array(array, lenght);
+        }
+        else {
+            array[i] = array[i] + (gradient * lr);
+        }
+    }
+    return (array);
 }
+
+// float gradient_descent(model_t *model)
+// {
+//     int m = 1;
+//     int p = 0;
+//     int result = 0;
+
+//     for (int i = 0; i < model->result_wanted[i]; i++) {
+//         result = model->result_wanted[i];
+//     }
+// }
 
 float sms_somme(float som_nrn_lay2, float prob_nrn_lay1, float wgth_nrn_lay2)
 {
