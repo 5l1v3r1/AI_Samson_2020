@@ -107,18 +107,23 @@ int sms_learn(model_t *model)
     return (SUCCESS);
 }
 
+
 int sms_match_ml_user_output(model_t *model)
 {
+    int retropropagation = FALSE;
+
     for (int i = 0; i < model->nb_output; i++) {
         model->gradient[i] = sms_compute_gradient(model->output_set[i], model->result_wanted[i]);
         printf("Y_model %f, y wanted %f\n", model->gradient[i], model->result_wanted[i]);
         if (model->gradient[i] > model->learning_rate) {
-            my_putstr("===========>    RETROPOPAGATION\n");
-            return (TRUE);
-        }
+            model->loss++;
+            retropropagation = TRUE;
+        } else
+            model->accuracy++;
     }
-    my_putstr("===========>    GOOD\n");
 }
+
+
 
 int sms_fit_model(model_t *model, int generation, char *activation, float *inp, float *result, int lngt)
 {
@@ -131,6 +136,7 @@ int sms_fit_model(model_t *model, int generation, char *activation, float *inp, 
             return (ERROR);
         if (sms_link_model(model) == ERROR)
             return (ERROR);
+        sms_display_model(model, i + 1, generation);
         if (sms_match_ml_user_output(model) == TRUE)
             sms_learn(model);
     }
