@@ -27,7 +27,6 @@ float gradient_descent(model_t *model)
     for (int i = 0; i < model->result_wanted[i]; i++) {
         result = model->result_wanted[i];
     }
-
 }
 
 float sms_somme(float som_nrn_lay2, float prob_nrn_lay1, float wgth_nrn_lay2)
