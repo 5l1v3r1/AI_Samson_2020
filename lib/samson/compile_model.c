@@ -82,15 +82,18 @@ int sms_compile_model(model_t *model)
     return (SUCCESS);
 }
 
-int sms_get_eatch_nrn(layer_t *current_lay)
+int sms_get_eatch_nrn(layer_t *current_lay, model_t *model)
 {
     neuron_t *nrn = NULL;
+    int lgt = 0;
+    int lr = model->learning_rate;
 
     for (int i = 0; i < current_lay->nb_neuron; i++) {
         nrn = sms_find_neuron_by_id(current_lay, i);
         if (nrn == NULL)
             return (ERROR);
-        nrn->weight = sms_clean_float_array(nrn->weight, current_lay->lenght_prev_layer);
+        lgt = current_lay->lenght_prev_layer;
+        nrn->weight = retropropagation(nrn->weight, lgt, model->gradient[0], lr);
     }
     return (SUCCESS);
 }
@@ -101,7 +104,8 @@ int sms_learn(model_t *model)
 
     for (int i = 0; i < model->nb_layers; i++) {
         current_lay = sms_find_layer_by_id(model, i);
-        if (current_lay == NULL || sms_get_eatch_nrn(current_lay) == ERROR)
+        if (current_lay == NULL
+        || sms_get_eatch_nrn(current_lay, model) == ERROR)
             return (ERROR);
     }
     return (SUCCESS);
@@ -122,8 +126,6 @@ int sms_match_ml_user_output(model_t *model)
             model->accuracy++;
     }
 }
-
-
 
 int sms_fit_model(model_t *model, int generation, char *activation, float *inp, float *result, int lngt)
 {
