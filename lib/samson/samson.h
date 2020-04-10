@@ -30,6 +30,8 @@ typedef struct layer_s {
 
 typedef struct model_s {
     float *gradient;
+    float loss;
+    float accuracy;
     float biais;
     float learning_rate;
     int nb_input;
@@ -121,8 +123,7 @@ float sms_exp(float nb);                                                       /
 char **sms_int_encoder(char **dataset);                                        //PROTOTYPES LIB SAMSON
 char *sms_clean_array(char *str, int lenght);                                  //PROTOTYPES LIB SAMSON
 char *sms_fit_lines(char *str, int lenght);                                    //PROTOTYPES LIB SAMSON
-void sms_display_first_end_line(char *display_lines, int end);                 //PROTOTYPES LIB SAMSON
-int sms_display_model(int cur_gen, int tot_gen, int end);                      //PROTOTYPES LIB SAMSON
+void sms_display_first_end_line(model_t *model, char *display_lines, int end); //PROTOTYPES LIB SAMSON
 int sms_add_neuron(layer_t *layer, int id, int lenght_prev_lay);               //PROTOTYPES LIB SAMSON
 neuron_t *sms_get_last_neuron(neuron_t *current);                              //PROTOTYPES LIB SAMSON
 neuron_t *sms_prepare_new_neuron(neuron_t *new, int id);                       //PROTOTYPES LIB SAMSON
@@ -151,6 +152,7 @@ int sms_fill_dataoutput_mlresult(model_t *model);                              /
 int proces_link_nrn(layer_t *layer1, neuron_t *nrn_lay2);                      //PROTOTYPES LIB SAMSON
 int sms_link_two_neuron_together(layer_t *layer1, neuron_t *nrn2, int n);      //PROTOTYPES LIB SAMSON
 float sms_compute_gradient(float ml_activate, float result_activate);
+int sms_display_model(model_t *model, int cur_gen, int tot_gen);
                                                                            //end PROTOTYPES LIB SAMSON
 
 #endif
