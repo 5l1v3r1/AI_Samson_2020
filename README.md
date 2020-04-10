@@ -1,12 +1,12 @@
 # AI_Samson_2020
 
-
 ACTUALLY:
 Have :
 -Build model.
 -Build layers.
 -Build eatch neuron together.
 -Copute som, compute activation, biais (only sigmoid right now).
+-For the moment the regression decision is only made by a if.
 
 Need to :
 -Gradient Descent.
