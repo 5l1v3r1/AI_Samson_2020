@@ -18,14 +18,12 @@ float *retropropagation(float *array, int lenght, float gradient, int lr)
         neg = TRUE;
     }
     for (int i = 0; i < lenght; i++) {
-        if (neg) {
+        if (neg)
             array[i] = array[i] - (gradient * lr);
-        } else if (gradient > 0.8) {
+        else if (gradient > 0.8)
             array = sms_clean_float_array(array, lenght);
-        }
-        else {
+        else
             array[i] = array[i] + (gradient * lr);
-        }
     }
     return (array);
 }
