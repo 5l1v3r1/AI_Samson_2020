@@ -18,10 +18,17 @@
 //     weight[1] = weight[1] + (gradient * learning_rate * inputs[i][1]);
 // }
 
-//float linear_regression()
-// {
+float gradient_descent(model_t *model)
+{
+    int m = 1;
+    int p = 0;
+    int result = 0;
 
-// }
+    for (int i = 0; i < model->result_wanted[i]; i++) {
+        result = model->result_wanted[i];
+    }
+
+}
 
 float sms_somme(float som_nrn_lay2, float prob_nrn_lay1, float wgth_nrn_lay2)
 {
@@ -45,7 +52,7 @@ float sms_compute_gradient(float ml_activate, float result_activate)
 {
     float gradient = 0.0;
 
-    gradient = (ml_activate - result_activate);
+    gradient = (result_activate - ml_activate);//invers
     gradient *= gradient;
     return (gradient);
 }
