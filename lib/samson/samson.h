@@ -153,6 +153,7 @@ int proces_link_nrn(layer_t *layer1, neuron_t *nrn_lay2);                      /
 int sms_link_two_neuron_together(layer_t *layer1, neuron_t *nrn2, int n);      //PROTOTYPES LIB SAMSON
 float sms_compute_gradient(float ml_activate, float result_activate);
 int sms_display_model(model_t *model, int cur_gen, int tot_gen);
+float *retropropagation(float *array, int lenght, float gradient, int lr);
                                                                            //end PROTOTYPES LIB SAMSON
 
 #endif
