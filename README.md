@@ -6,10 +6,9 @@ Have :
 -Build layers.
 -Build eatch neuron together.
 -Copute som, compute activation, biais (only sigmoid right now).
--For the moment the regression decision is only made by a if.
+-Retropropagation.
 
 Need to :
--Gradient Descent.
 -Build int_encoder.
 -Build bin_encoder.
 -Build strenght_encoder.
