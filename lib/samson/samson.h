@@ -46,7 +46,7 @@ typedef struct model_s {
 #define FALSE         0                                                        //CONST AND DEFINE
 #define EXP           2.718281828459045                                        //CONST AND DEFINE
 #define EULER         2.718281                                                 //CONST AND DEFINE
-#define LEARNING_RATE 0.1                                                      //CONST AND DEFINE
+#define LEARNING_RATE 0.3                                                      //CONST AND DEFINE
 #define ERROR 84                                                               //CONST AND DEFINE
 #define SUCCESS        0                                                        //CONST AND DEFINE
                                                                            //end CONST AND DEFINE
