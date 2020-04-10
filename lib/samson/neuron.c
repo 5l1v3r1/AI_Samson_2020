@@ -10,7 +10,7 @@
 float *sms_clean_float_array(float *array, int lenght)
 {
     for (int i = 0; i < lenght; i++)
-        array[i] = sms_random_float(-1.0, 1.0, 3);
+        array[i] = sms_random_float(-1.0, 1.0, 6);
     return (array);
 }
 
