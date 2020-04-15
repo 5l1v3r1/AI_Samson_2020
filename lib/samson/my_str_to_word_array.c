@@ -55,12 +55,12 @@ char **my_str_to_word_array(char *str, int slash_mode_on)
     int nb_word = count_word(str);
     int nb_char_alr_hdl = 0;
 
-    array = malloc(sizeof(char *) * nb_word + 1);
+    array = malloc(sizeof(char *) * (nb_word + 1));
     if (array == NULL)
         exit(0);
     for (int i = 0; i < nb_word; i++) {
         array[i] = NULL;
-        array[i] = malloc(sizeof(char) * nb_char + 1);
+        array[i] = malloc(sizeof(char) * (nb_char + 1));
         if (array[i] == NULL)
             exit(0);
     }
